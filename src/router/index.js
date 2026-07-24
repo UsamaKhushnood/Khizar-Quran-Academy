@@ -1,0 +1,63 @@
+import { useAuthStore } from "@/stores";
+import { createRouter, createWebHistory } from "vue-router";
+import NProgress from "nprogress";
+import authRoutes from "./auth.routes.js";
+import dashboardRoutes from "./dashboard.routes.js";
+import WrapperLayout from "@/layouts/WrapperLayout.vue";
+
+const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
+    {
+      path: "/",
+      component: WrapperLayout,
+      children: [
+        {
+          path: "",
+          name: "home",
+          meta: { title: "Form Components" },
+          component: () => import("../views/home/index.vue"),
+        },
+        authRoutes,
+        {
+          path: "/no-permission",
+          name: "403",
+          meta: {
+            title: "No Permission",
+          },
+          component: () => import("../views/no-permission.vue"),
+        },
+        {
+          path: "/:pathMatch(.*)*",
+          name: "404",
+          meta: {
+            title: "Page Not Found",
+          },
+          component: () => import("../views/page-not-found.vue"),
+        },
+      ],
+    },
+    dashboardRoutes,
+  ],
+});
+
+router.beforeEach(async (to, from, next) => {
+  document.title = `${to.meta.title}`;
+  NProgress.start();
+
+  const authStore = useAuthStore();
+  const isAuthenticated = authStore.isAuthenticated;
+  const authRequired = to.meta.auth;
+
+  if (authRequired && !isAuthenticated) {
+    return next({ name: "login" });
+  }
+
+  next();
+});
+
+router.afterEach(() => {
+  NProgress.done();
+});
+
+export default router;
