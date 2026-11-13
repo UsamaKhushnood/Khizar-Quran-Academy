@@ -1,0 +1,6 @@
+{
+  "name": "Khizar Quran Academy",
+  "description": "Online 1-on-1 Quran learning platform with qualified teachers for Muslim families in USA, Canada, Dubai, and Pakistan.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
