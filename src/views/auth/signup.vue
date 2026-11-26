@@ -1,9 +1,9 @@
 <template>
-  <div class="min-h-[calc(100vh-140px)] bg-white flex flex-col lg:flex-row">
+  <div class="flex-1 bg-white flex flex-col lg:flex-row">
     <!-- Left Column: Academy Value Story -->
     <div class="lg:w-1/2 bg-gradient-to-br from-[#0B4A34] via-[#0E6245] to-[#14241E] text-white p-8 sm:p-12 lg:p-16 flex flex-col justify-between">
-      <div>
-        <div class="flex items-center gap-3 mb-12">
+      <div class="w-full lg:w-11/12 xl:w-5/6 mx-auto flex-1 flex flex-col justify-center">
+        <div class="flex items-center gap-3 mb-10">
           <span class="w-10 h-10 rounded-xl bg-white/10 border border-white/20 text-white flex items-center justify-center font-serif text-xl shadow-xs">
             خ
           </span>
@@ -13,43 +13,43 @@
           </div>
         </div>
 
-        <span class="inline-block px-3 py-1 rounded-full bg-white/10 text-emerald-200 text-xs font-semibold uppercase tracking-wider mb-4 border border-white/10">
+        <Badge variant="outline" class="w-fit px-3 py-1 rounded-full bg-white/10 text-emerald-200 text-xs font-semibold uppercase tracking-wider mb-4 border-white/15">
           Admissions Open
-        </span>
+        </Badge>
 
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-white mb-6">
+        <h1 class="text-3xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight leading-[1.15] text-white mb-5">
           Start your family’s Quran journey with 3 free trial classes.
         </h1>
 
-        <p class="text-emerald-100 text-sm sm:text-base leading-relaxed mb-8 container">
+        <p class="text-emerald-100 text-sm sm:text-base leading-relaxed mb-8">
           Live 30-minute private video lessons with certified, patient teachers. Tailored to your child’s pace and your family’s schedule.
         </p>
 
-        <div class="space-y-4 pt-4 border-t border-white/15 container">
+        <div class="space-y-4 pt-6 border-t border-white/15">
           <div class="flex items-start gap-3">
             <CheckCircle2 class="w-5 h-5 text-emerald-300 shrink-0 mt-0.5" />
-            <div class="text-xs sm:text-sm">
+            <div class="text-xs sm:text-sm text-emerald-50">
               <strong class="text-white">3 Free Trial Classes:</strong> Experience the lessons first with zero payment details required upfront.
             </div>
           </div>
 
           <div class="flex items-start gap-3">
             <ShieldCheck class="w-5 h-5 text-emerald-300 shrink-0 mt-0.5" />
-            <div class="text-xs sm:text-sm">
+            <div class="text-xs sm:text-sm text-emerald-50">
               <strong class="text-white">Female & Male Scholars:</strong> Certified teachers with verified Tajweed Ijazah and gentle child pedagogy.
             </div>
           </div>
 
           <div class="flex items-start gap-3">
             <HeartHandshake class="w-5 h-5 text-emerald-300 shrink-0 mt-0.5" />
-            <div class="text-xs sm:text-sm">
+            <div class="text-xs sm:text-sm text-emerald-50">
               <strong class="text-white">One Transparent Fee:</strong> $30 USD / PKR 10,000 monthly for 4 days a week after your trial.
             </div>
           </div>
         </div>
       </div>
 
-      <div class="pt-10 mt-10 border-t border-white/10 text-xs text-emerald-200/90 space-y-2">
+      <div class="w-full lg:w-11/12 xl:w-5/6 mx-auto pt-8 mt-8 border-t border-white/10 text-xs text-emerald-200/90 space-y-2">
         <p class="italic">
           "The best among you are those who learn the Quran and teach it." — Sahih al-Bukhari
         </p>
@@ -62,7 +62,7 @@
 
     <!-- Right Column: CForm with Common Form Components -->
     <div class="lg:w-1/2 bg-[#FCFCFA] p-8 sm:p-12 lg:p-16 flex flex-col justify-center">
-      <div class="container w-full mx-auto">
+      <div class="w-full sm:w-10/12 md:w-3/4 lg:w-11/12 xl:w-4/5 mx-auto">
         <button
           type="button"
           @click="router.push('/')"
@@ -93,7 +93,7 @@
                 v-model="form.name"
                 type="text"
                 placeholder="e.g. Fatima Tariq"
-                class="h-12 bg-white border-stone-300 rounded-xl"
+                class="h-11 bg-white border-stone-300 rounded-xl"
               />
             </CField>
 
@@ -103,7 +103,7 @@
                 v-model="form.email"
                 type="email"
                 placeholder="name@example.com"
-                class="h-12 bg-white border-stone-300 rounded-xl"
+                class="h-11 bg-white border-stone-300 rounded-xl"
               />
             </CField>
 
@@ -112,11 +112,11 @@
                 id="password"
                 v-model="form.password"
                 placeholder="Minimum 6 characters"
-                class="h-12 bg-white border-stone-300 rounded-xl"
+                class="h-11 bg-white border-stone-300 rounded-xl"
               />
             </CField>
 
-            <div class="pt-2">
+            <div class="pt-1">
               <label class="flex items-start gap-3 text-xs text-stone-700 cursor-pointer select-none">
                 <Checkbox v-model="termsAccepted" class="mt-0.5" />
                 <span class="leading-relaxed">
@@ -136,7 +136,7 @@
             <Button
               type="submit"
               :disabled="loading || !termsAccepted"
-              class="w-full py-4 h-auto px-6 rounded-xl font-bold text-sm text-white bg-[#0E6245] hover:bg-[#0b4d36] shadow-sm hover:shadow-md flex items-center justify-center gap-2 mt-2"
+              class="w-full py-3.5 h-auto px-6 rounded-xl font-bold text-sm text-white bg-[#0E6245] hover:bg-[#0b4d36] shadow-sm hover:shadow-md flex items-center justify-center gap-2 mt-2"
             >
               <span>{{ loading ? 'Creating Account...' : 'Sign Up & Continue to Free Classes' }}</span>
               <ArrowRight class="w-4 h-4" />
@@ -162,6 +162,7 @@ import { email, helpers, minLength, required } from '@vuelidate/validators';
 import { ArrowRight, ArrowLeft, CheckCircle2, ShieldCheck, HeartHandshake, Phone } from '@lucide/vue';
 import { toast } from 'vue-sonner';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { Checkbox } from '@/components/ui/checkbox';
 import CForm from '@/components/common/form/CForm.vue';
 import CField from '@/components/common/form/CField.vue';

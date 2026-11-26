@@ -54,14 +54,14 @@ const router = createRouter({
           path: "login",
           alias: ["/signin"],
           name: "login",
-          meta: { title: "Sign In | Khizar Quran Academy" },
+          meta: { title: "Sign In | Khizar Quran Academy", hideNavbar: true, hideFooter: true },
           component: () => import("@/views/auth/login.vue"),
         },
         {
           path: "signup",
           alias: ["/register", "/book-free-classes", "/join"],
           name: "signup",
-          meta: { title: "Book 3 Free Classes | Khizar Quran Academy" },
+          meta: { title: "Book 3 Free Classes | Khizar Quran Academy", hideNavbar: true, hideFooter: true },
           component: () => import("@/views/auth/signup.vue"),
         },
         {

@@ -1,9 +1,9 @@
 <template>
-  <div class="min-h-[calc(100vh-140px)] bg-white flex flex-col lg:flex-row">
+  <div class="flex-1 bg-white flex flex-col lg:flex-row">
     <!-- Left Column: Academy Side Banner -->
     <div class="lg:w-1/2 bg-gradient-to-br from-[#0B4A34] via-[#0E6245] to-[#14241E] text-white p-8 sm:p-12 lg:p-16 flex flex-col justify-between">
-      <div>
-        <div class="flex items-center gap-3 mb-12">
+      <div class="w-full lg:w-11/12 xl:w-5/6 mx-auto flex-1 flex flex-col justify-center">
+        <div class="flex items-center gap-3 mb-10">
           <span class="w-10 h-10 rounded-xl bg-white/10 border border-white/20 text-white flex items-center justify-center font-serif text-xl shadow-xs">
             خ
           </span>
@@ -13,43 +13,43 @@
           </div>
         </div>
 
-        <span class="inline-block px-3 py-1 rounded-full bg-white/10 text-emerald-200 text-xs font-semibold uppercase tracking-wider mb-4 border border-white/10">
+        <Badge variant="outline" class="w-fit px-3 py-1 rounded-full bg-white/10 text-emerald-200 text-xs font-semibold uppercase tracking-wider mb-4 border-white/15">
           Welcome Back
-        </span>
+        </Badge>
 
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-white mb-6">
+        <h1 class="text-3xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight leading-[1.15] text-white mb-5">
           Continue your Quran learning journey.
         </h1>
 
-        <p class="text-emerald-100 text-sm sm:text-base leading-relaxed mb-8 container">
+        <p class="text-emerald-100 text-sm sm:text-base leading-relaxed mb-8">
           Sign in to manage your student lessons, schedule classes with certified tutors, and access live video sessions.
         </p>
 
-        <div class="space-y-4 pt-4 border-t border-white/15 container">
+        <div class="space-y-4 pt-6 border-t border-white/15">
           <div class="flex items-start gap-3">
             <CheckCircle2 class="w-5 h-5 text-emerald-300 shrink-0 mt-0.5" />
-            <div class="text-xs sm:text-sm">
+            <div class="text-xs sm:text-sm text-emerald-50">
               <strong class="text-white">Live 1-on-1 Lessons:</strong> Dedicated attention from your assigned teacher.
             </div>
           </div>
 
           <div class="flex items-start gap-3">
             <ShieldCheck class="w-5 h-5 text-emerald-300 shrink-0 mt-0.5" />
-            <div class="text-xs sm:text-sm">
+            <div class="text-xs sm:text-sm text-emerald-50">
               <strong class="text-white">Google Meet & Zoom:</strong> Secure, easy classroom links in your browser.
             </div>
           </div>
 
           <div class="flex items-start gap-3">
             <HeartHandshake class="w-5 h-5 text-emerald-300 shrink-0 mt-0.5" />
-            <div class="text-xs sm:text-sm">
+            <div class="text-xs sm:text-sm text-emerald-50">
               <strong class="text-white">Direct Coordinator Support:</strong> Help is always one message away.
             </div>
           </div>
         </div>
       </div>
 
-      <div class="pt-10 mt-10 border-t border-white/10 text-xs text-emerald-200/90 flex items-center gap-2">
+      <div class="w-full lg:w-11/12 xl:w-5/6 mx-auto pt-8 mt-8 border-t border-white/10 text-xs text-emerald-200/90 flex items-center gap-2">
         <Phone class="w-3.5 h-3.5 text-emerald-300" />
         <span>Need help logging in? Call or WhatsApp +92 331 4278863</span>
       </div>
@@ -57,7 +57,7 @@
 
     <!-- Right Column: CForm with Common Form Components -->
     <div class="lg:w-1/2 bg-[#FCFCFA] p-8 sm:p-12 lg:p-16 flex flex-col justify-center">
-      <div class="container w-full mx-auto">
+      <div class="w-full sm:w-10/12 md:w-3/4 lg:w-11/12 xl:w-4/5 mx-auto">
         <button
           type="button"
           @click="router.push('/')"
@@ -67,7 +67,7 @@
           <span>Back to Home</span>
         </button>
 
-        <div className="mb-8">
+        <div class="mb-8">
           <h2 class="text-2xl sm:text-3xl font-extrabold text-[#14241E] tracking-tight">
             Sign In to Your Account
           </h2>
@@ -88,7 +88,7 @@
                 v-model="form.email"
                 type="email"
                 placeholder="name@example.com"
-                class="h-12 bg-white border-stone-300 rounded-xl"
+                class="h-11 bg-white border-stone-300 rounded-xl"
               />
             </CField>
 
@@ -97,14 +97,14 @@
                 id="password"
                 v-model="form.password"
                 placeholder="Your password"
-                class="h-12 bg-white border-stone-300 rounded-xl"
+                class="h-11 bg-white border-stone-300 rounded-xl"
               />
             </CField>
 
             <Button
               type="submit"
               :disabled="loading"
-              class="w-full py-4 h-auto px-6 rounded-xl font-bold text-sm text-white bg-[#0E6245] hover:bg-[#0b4d36] shadow-sm hover:shadow-md flex items-center justify-center gap-2 mt-2"
+              class="w-full py-3.5 h-auto px-6 rounded-xl font-bold text-sm text-white bg-[#0E6245] hover:bg-[#0b4d36] shadow-sm hover:shadow-md flex items-center justify-center gap-2 mt-2"
             >
               <span>{{ loading ? 'Signing In...' : 'Sign In' }}</span>
               <ArrowRight class="w-4 h-4" />
@@ -129,6 +129,7 @@ import { useRouter } from 'vue-router';
 import { email, helpers, required } from '@vuelidate/validators';
 import { ArrowRight, ArrowLeft, CheckCircle2, ShieldCheck, HeartHandshake, Phone } from '@lucide/vue';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import CForm from '@/components/common/form/CForm.vue';
 import CField from '@/components/common/form/CField.vue';
 import CInput from '@/components/common/form/CInput.vue';

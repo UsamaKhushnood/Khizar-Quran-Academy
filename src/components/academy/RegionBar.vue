@@ -28,7 +28,7 @@
           class="hidden sm:inline-flex items-center gap-1.5 text-stone-300 hover:text-emerald-400 transition-colors text-[11px] sm:text-xs font-medium"
           title="Chat on WhatsApp"
         >
-          <MessageSquare class="w-3.5 h-3.5 text-emerald-400" />
+          <IconBrandWhatsapp class="w-4 h-4 text-emerald-400" />
           <span>WhatsApp</span>
         </a>
 
@@ -47,7 +47,8 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
-import { Clock, Phone, MessageSquare } from '@lucide/vue';
+import { Clock, Phone } from '@lucide/vue';
+import { IconBrandWhatsapp } from '@tabler/icons-vue';
 
 const pakistanTime = ref('');
 let intervalId: ReturnType<typeof setInterval> | null = null;
