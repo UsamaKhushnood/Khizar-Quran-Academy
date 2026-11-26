@@ -2,8 +2,8 @@
   <section id="pricing" class="py-16 md:py-24 bg-white border-b border-stone-200">
     <div class="container mx-auto px-4 sm:px-6">
       <div class="container mx-auto text-center mb-12">
-        <Badge variant="outline" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border-emerald-200/80 text-emerald-800 text-xs font-semibold mb-3">
-          <Sparkles class="w-3.5 h-3.5 text-[#0E6245]" />
+        <Badge variant="primary" class="mb-3 px-3 py-1">
+          <Sparkles class="w-3.5 h-3.5 mr-1" />
           <span>One Clear Price · No Complicated Tiers</span>
         </Badge>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-[#14241E] tracking-tight">
@@ -13,45 +13,25 @@
           Every course is taught 1-on-1 for <strong>4 days a week</strong> at your child’s own chosen time.
           Includes <strong>3 free trial classes</strong> before you pay a single penny.
         </p>
-
-        <div class="mt-6 flex flex-wrap items-center justify-center gap-1.5 p-1.5 rounded-xl bg-stone-100 border border-stone-200 max-w-fit mx-auto">
-          <span class="text-[11px] font-semibold text-stone-500 px-2 flex items-center gap-1">
-            <Globe class="w-3 h-3 text-[#0E6245]" />
-            <span>Currency:</span>
-          </span>
-          <button
-            v-for="c in Object.values(CURRENCIES)"
-            :key="c.id"
-            type="button"
-            @click="selectedCurrencyId = c.id"
-            :class="[
-              'px-3 py-1 text-xs font-semibold rounded-lg transition-all flex items-center gap-1.5 cursor-pointer',
-              c.id === currentCurrency.id
-                ? 'bg-white text-[#0E6245] shadow-xs ring-1 ring-stone-200'
-                : 'text-stone-600 hover:text-stone-900',
-            ]"
-          >
-            <span>{{ c.flag }}</span>
-            <span>{{ c.currencyCode }}</span>
-          </button>
-        </div>
       </div>
 
-      <div class="container mx-auto">
+      <div class="w-full sm:w-11/12 md:w-3/4 lg:w-2/3 xl:w-1/2 mx-auto">
         <CCard
           hide-header
-          class="rounded-3xl bg-gradient-to-b from-[#FCFCFA] to-white border-2 border-[#0E6245] shadow-xl p-8 sm:p-10 relative overflow-hidden gap-0"
+          class="rounded-3xl bg-gradient-to-b from-[#FCFCFA] to-white border-2 border-[#0E6245] shadow-xl p-6 sm:p-10 gap-0"
         >
-          <div class="absolute top-0 right-0 bg-[#0E6245] text-white text-[11px] font-bold uppercase tracking-wider px-4 py-1.5 rounded-bl-2xl shadow-xs">
-            4 Days / Week · 1-on-1 Classes
-          </div>
-
           <div class="space-y-6">
-            <div>
-              <Badge class="text-xs font-bold uppercase tracking-wider text-[#0E6245] bg-[#0E6245]/10 hover:bg-[#0E6245]/15 border-0 px-3 py-1 rounded-full">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <Badge variant="primary" class="px-3 py-1 uppercase tracking-wider font-bold">
                 All Courses Included
               </Badge>
-              <h3 class="text-2xl sm:text-3xl font-extrabold text-[#14241E] mt-3">
+              <Badge variant="default" class="px-3 py-1 font-semibold">
+                4 Days / Week · 1-on-1
+              </Badge>
+            </div>
+
+            <div>
+              <h3 class="text-2xl sm:text-3xl font-extrabold text-[#14241E]">
                 Monthly Full-Tuition Plan
               </h3>
               <p class="text-xs sm:text-sm text-stone-600 mt-1">
@@ -59,9 +39,9 @@
               </p>
             </div>
 
-            <div class="py-4 border-y border-stone-200/80">
-              <div class="flex items-baseline gap-1.5">
-                <span class="text-2xl sm:text-3xl font-bold text-stone-700">
+            <div class="py-5 px-5 rounded-2xl bg-[#F7F6F2] border border-stone-200/80">
+              <div class="flex items-baseline gap-1.5 flex-wrap">
+                <span class="text-2xl sm:text-3xl font-bold text-[#0E6245]">
                   {{ currentCurrency.symbol }}
                 </span>
                 <span class="text-5xl sm:text-6xl font-black text-[#14241E] font-mono tracking-tight tabular-nums">
@@ -71,9 +51,11 @@
                   / month per student
                 </span>
               </div>
-              <p class="text-xs text-stone-500 mt-2 flex items-center gap-1.5">
-                <span class="w-2 h-2 rounded-full bg-emerald-500" />
-                <span>Region: {{ currentCurrency.country }} ({{ currentCurrency.currencyCode }}) · {{ currentCurrency.note }}</span>
+              <p class="text-xs text-stone-600 mt-2.5 flex items-center gap-2">
+                <Globe class="w-3.5 h-3.5 text-[#0E6245] shrink-0" />
+                <span>
+                  {{ currentCurrency.flag }} {{ currentCurrency.country }} ({{ currentCurrency.currencyCode }}) · {{ currentCurrency.note }}
+                </span>
               </p>
             </div>
 
@@ -104,7 +86,7 @@
         </CCard>
       </div>
 
-      <div class="container mx-auto mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center text-xs text-stone-600">
+      <div class="w-full lg:w-3/4 mx-auto mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center text-xs text-stone-600">
         <div class="flex flex-col items-center gap-1.5">
           <ShieldCheck class="w-6 h-6 text-[#0E6245]" />
           <span class="font-bold text-stone-900">Secure Card Billing</span>
@@ -134,9 +116,11 @@ import { Check, ShieldCheck, ArrowRight, Sparkles, Clock, Calendar, Globe } from
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import CCard from '@/components/common/CCard.vue';
+import { useAcademyStore } from '@/stores/academy.store';
 
 interface CurrencyOption {
   id: string;
+  regionId: 'pakistan' | 'usa' | 'canada' | 'uae';
   country: string;
   flag: string;
   currencyCode: string;
@@ -146,12 +130,11 @@ interface CurrencyOption {
 }
 
 const CURRENCIES: Record<string, CurrencyOption> = {
-  pk: { id: 'pk', country: 'Pakistan', flag: '🇵🇰', currencyCode: 'PKR', symbol: 'PKR ', price: '10,000', note: 'Direct Pakistani Bank / Payoneer / Card' },
-  us: { id: 'us', country: 'United States', flag: '🇺🇸', currencyCode: 'USD', symbol: '$', price: '30', note: 'International Visa / MasterCard / 2Checkout' },
-  uk: { id: 'uk', country: 'United Kingdom', flag: '🇬🇧', currencyCode: 'USD', symbol: '$', price: '30', note: 'Fixed $30 USD monthly rate' },
-  ca: { id: 'ca', country: 'Canada', flag: '🇨🇦', currencyCode: 'CAD', symbol: 'CA$', price: '40', note: 'Standard Canadian rate' },
-  ae: { id: 'ae', country: 'Dubai / UAE', flag: '🇦🇪', currencyCode: 'AED', symbol: 'AED ', price: '135', note: 'AED equivalent of PKR 10,000' },
-  other: { id: 'other', country: 'International', flag: '🌐', currencyCode: 'USD', symbol: '$', price: '30', note: 'Standard Global USD Rate' },
+  pk: { id: 'pk', regionId: 'pakistan', country: 'Pakistan', flag: '🇵🇰', currencyCode: 'PKR', symbol: 'PKR ', price: '10,000', note: 'Direct Pakistani Bank / Payoneer / Card' },
+  us: { id: 'us', regionId: 'usa', country: 'United States', flag: '🇺🇸', currencyCode: 'USD', symbol: '$', price: '30', note: 'International Visa / MasterCard / 2Checkout' },
+  uk: { id: 'uk', regionId: 'usa', country: 'United Kingdom', flag: '🇬🇧', currencyCode: 'USD', symbol: '$', price: '30', note: 'Fixed $30 USD monthly rate' },
+  ca: { id: 'ca', regionId: 'canada', country: 'Canada', flag: '🇨🇦', currencyCode: 'CAD', symbol: 'CA$', price: '40', note: 'Standard Canadian rate' },
+  ae: { id: 'ae', regionId: 'uae', country: 'Dubai / UAE', flag: '🇦🇪', currencyCode: 'AED', symbol: 'AED ', price: '135', note: 'AED equivalent of PKR 10,000' },
 };
 
 const deliverables = [
@@ -163,25 +146,37 @@ const deliverables = [
 ];
 
 const router = useRouter();
-const selectedCurrencyId = ref('us');
-const currentCurrency = computed(() => CURRENCIES[selectedCurrencyId.value] || CURRENCIES.us);
+const store = useAcademyStore();
+const detectedCurrencyId = ref('us');
+const currentCurrency = computed(() => CURRENCIES[detectedCurrencyId.value] || CURRENCIES.us);
 
-onMounted(() => {
+function detectRegionCurrency() {
   try {
     const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
     if (tz.includes('Karachi') || tz.includes('Pakistan')) {
-      selectedCurrencyId.value = 'pk';
-    } else if (['Toronto', 'Vancouver', 'Edmonton', 'Winnipeg', 'Halifax', 'Canada'].some((c) => tz.includes(c))) {
-      selectedCurrencyId.value = 'ca';
-    } else if (tz.includes('Dubai') || tz.includes('Muscat')) {
-      selectedCurrencyId.value = 'ae';
-    } else if (tz.includes('London')) {
-      selectedCurrencyId.value = 'uk';
-    } else {
-      selectedCurrencyId.value = 'us';
+      return 'pk';
+    }
+    if (['Toronto', 'Vancouver', 'Edmonton', 'Winnipeg', 'Halifax', 'Canada'].some((c) => tz.includes(c))) {
+      return 'ca';
+    }
+    if (tz.includes('Dubai') || tz.includes('Muscat') || tz.includes('Qatar') || tz.includes('Riyadh')) {
+      return 'ae';
+    }
+    if (tz.includes('London')) {
+      return 'uk';
     }
   } catch {
-    selectedCurrencyId.value = 'us';
+    // fallback to US
+  }
+  return 'us';
+}
+
+onMounted(() => {
+  const id = detectRegionCurrency();
+  detectedCurrencyId.value = id;
+  const currency = CURRENCIES[id];
+  if (currency) {
+    store.setRegionById(currency.regionId);
   }
 });
 </script>
