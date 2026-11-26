@@ -6,11 +6,13 @@
     <Select v-model="modelValue" :disabled="loading || disabled">
       <SelectTrigger
         ref="trigger"
-        class="w-full bg-background cursor-pointer"
-        :class="triggerClass"
+        :class="[
+          'w-full h-11 rounded-xl border-input bg-white px-3.5 text-sm shadow-xs cursor-pointer transition-colors hover:border-stone-400 focus-visible:border-primary focus-visible:ring-primary/20',
+          triggerClass,
+        ]"
       >
-        <div class="flex items-center truncate w-full">
-          <Spinner v-if="loading" class="size-4 mr-2" />
+        <div class="flex items-center truncate w-full gap-2">
+          <Spinner v-if="loading" class="size-4 mr-1" />
           <slot name="prefix" :value="modelValue"></slot>
           <slot name="selected" :placeholder="placeholder" :value="modelValue">
             <SelectValue
@@ -21,14 +23,14 @@
           </slot>
         </div>
       </SelectTrigger>
-      <SelectContent :style="{ maxWidth: inputWidth }">
+      <SelectContent position="popper" :body-lock="false" class="w-(--reka-select-trigger-width) rounded-xl border-stone-200 shadow-lg p-1">
         <SelectGroup>
           <SelectLabel
             v-if="!loading && !options?.length"
-            class="py-20 text-center text-base font-normal text-muted-foreground"
+            class="py-6 text-center text-sm font-normal text-muted-foreground"
             >No Options Available
           </SelectLabel>
-          <SelectLabel v-else class="text-xs text-muted-foreground">{{
+          <SelectLabel v-else-if="placeholder" class="px-2.5 py-1.5 text-xs font-semibold text-muted-foreground">{{
             placeholder
           }}</SelectLabel>
           <template v-if="!loading">

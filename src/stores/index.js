@@ -1,4 +1,5 @@
 export * from "./auth.store";
+export * from "./academy.store";
 
 import { getActivePinia } from "pinia";
 

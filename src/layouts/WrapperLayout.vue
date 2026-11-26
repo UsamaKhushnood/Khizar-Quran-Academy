@@ -1,15 +1,19 @@
 <template>
   <ConfigProvider>
-    <ThemeToggler class="fixed top-3 right-3" />
-    <RouterView></RouterView>
+    <div class="min-h-screen flex flex-col bg-[#FCFCFA] text-[#14241E] overflow-x-hidden">
+      <RegionBar />
+      <Navbar />
+      <main class="flex-1">
+        <RouterView />
+      </main>
+      <Footer />
+    </div>
   </ConfigProvider>
 </template>
-<script setup>
-import { ConfigProvider } from "reka-ui";
-import { useColorMode } from "@vueuse/core";
-import ThemeToggler from "@/components/common/ThemeToggler.vue";
 
-const mode = useColorMode({
-  initialValue: "light",
-});
+<script setup lang="ts">
+import { ConfigProvider } from 'reka-ui';
+import RegionBar from '@/components/academy/RegionBar.vue';
+import Navbar from '@/components/academy/Navbar.vue';
+import Footer from '@/components/academy/Footer.vue';
 </script>
